@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+
+<application xmlns="http://ns.adobe.com/air/application/51.1">
+    <id>xcmdflash</id>
+    <versionNumber>1.0</versionNumber>
+    <filename>星辰猫的flash启动器</filename>
+    <description/>
+    <name>星辰猫的flash启动器</name>
+    <copyright/>
+    <initialWindow>
+        <content>Main.swf</content>
+        <systemChrome>standard</systemChrome>
+        <transparent>false</transparent>
+        <visible>true</visible>
+        <fullScreen>true</fullScreen>
+        <aspectRatio>landscape</aspectRatio>
+        <renderMode>auto</renderMode>
+        <maximizable>true</maximizable>
+        <minimizable>true</minimizable>
+        <resizable>true</resizable>
+        <autoOrients>true</autoOrients>
+    </initialWindow>
+    <!--<icon>
+        <image16x16>assets/icons/icon16.png</image16x16>
+        <image32x32>assets/icons/icon32.png</image32x32>
+        <image48x48>assets/icons/icon48.png</image48x48>
+        <image128x128>assets/icons/icon128.png</image128x128>
+      </icon>-->
+    <customUpdateUI>false</customUpdateUI>
+    <allowBrowserInvocation>false</allowBrowserInvocation>
+    <!-- 允许访问网络 -->
+    <!--<allowNetworking>all</allowNetworking>-->
+
+    <!-- 添加跨域权限 -->
+    <!--<crossOriginPolicy>anonymous</crossOriginPolicy>-->
+    <android>
+        <manifestAdditions><![CDATA[<manifest>
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+</manifest>]]></manifestAdditions>
+    </android>
+    <versionLabel/>
+</application>
