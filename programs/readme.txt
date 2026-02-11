@@ -1,9 +1,12 @@
 游戏路径：
-
-app:/programs:
-	demo:
-		demo.swf
-		xcmFlashConfig.json
+app:/programs/
+├── demo/
+│   ├── demo.swf
+│   └── xcmFlashConfig.json
+├── demo2/
+│   ├── demo2.swf
+│   └── xcmFlashConfig.json
+└── ...
 
 
 xcmFlashConfig.json:

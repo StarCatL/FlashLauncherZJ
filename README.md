@@ -8,10 +8,14 @@
 游戏文件应按照以下结构放置：
 
 ```text
-app:/programs:
-└── demo/
-    ├── demo.swf
-    └── xcmFlashConfig.json
+app:/programs/
+├── demo/
+│   ├── demo.swf
+│   └── xcmFlashConfig.json
+├── demo2/
+│   ├── demo2.swf
+│   └── xcmFlashConfig.json
+└── ...
 ```
 
 配置文件说明
@@ -31,8 +35,8 @@ xcmFlashConfig.json 是游戏的核心配置文件，其字段含义如下：
 ## SWF 文件转换说明
 
 仅支持未加密、未加壳的 SWF 文件。若文件经过加密或多层加壳，需先进行脱壳处理。
+当原SWF文件无法运行时，建议尝试进行转换。但请注意，此方法为一种解决方案，其本身并不保证所有文件都能被修复并成功运行。
 
-转换步骤：
 确保系统已安装 JDK17
 
 执行以下命令进行转换：
@@ -50,4 +54,3 @@ java -jar swfUtils-1.0-SNAPSHOT.jar "input.swf" "output.swf"
 ```bash
 xcmFlash app:/programs/demo/demo.swf
 ```
-

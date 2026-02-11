@@ -1,5 +1,6 @@
 package com.xcm.flashlauncher {
 
+import com.cheat.CheatPanel;
 import com.xcm.flashlauncher.config.GlobalConfig;
 import com.xcm.flashlauncher.ui.MainUI;
 
@@ -13,6 +14,7 @@ import flash.display.NativeWindow;
 import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageDisplayState;
+import flash.display.StageQuality;
 import flash.display.StageScaleMode;
 import flash.display.XCMLoader;
 import flash.events.Event;
@@ -48,6 +50,8 @@ public class Main extends Sprite {
     private var currentGame:Loader;
     private var currentGameMovie:MovieClip;
     private var currentGameInfo:Object;
+
+    private var panel:CheatPanel = null;
 
     // UI实例
     private var mainUI:MainUI;
@@ -85,6 +89,7 @@ public class Main extends Sprite {
     }
 
     private function init():void {
+        stage.quality = StageQuality.LOW;
         // 保存窗口原始尺寸
         if (stage.nativeWindow) {
             originalWindowSize.width = stage.nativeWindow.width;
@@ -330,21 +335,34 @@ public class Main extends Sprite {
         // 全局快捷键
         if (e.keyCode == Keyboard.F1) {
             toggleMemoryDisplay();
+            return
         }
 
         if (e.keyCode == Keyboard.F2) {
             refreshCurrentGame();
+            return
         }
 
         if (e.keyCode == Keyboard.F3) {
             returnToMainMenu();
+            return
         }
 
         if (e.keyCode == Keyboard.F4) {
             toggleFullScreen();
+            return
         }
 
         if (e.keyCode == Keyboard.F5) {
+            if (panel == null) {
+                panel = CheatPanel.getInstance();
+                addChild(panel);
+                return;
+            }
+            return;
+        }
+
+        if (e.keyCode == Keyboard.F6) {
             if (currentGame) {
                 debugInfo();
             }
@@ -469,8 +487,8 @@ public class Main extends Sprite {
             // 设置当前游戏文件夹路径
             GlobalConfig.currentGameFolder = folder;
 
-            loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onGameLoaded);
             loader.contentLoaderInfo.addEventListener(Event.INIT, onGameInit);
+            loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onGameLoaded);
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onGameLoadError);
 
             loader.load(new URLRequest(swfFile.url), context);
@@ -875,7 +893,8 @@ public class Main extends Sprite {
 
     private function loadSettings():void {
         try {
-            var settingsFile:File = File.applicationStorageDirectory.resolvePath("settings.json");
+            var settingsFile:File = File.applicationDirectory.resolvePath("settings.json");
+            trace("loadSettings:", settingsFile.url)
             if (settingsFile.exists) {
                 var fileStream:FileStream = new FileStream();
                 fileStream.open(settingsFile, FileMode.READ);
@@ -890,7 +909,8 @@ public class Main extends Sprite {
 
     private function saveSettings():void {
         try {
-            var settingsFile:File = File.applicationStorageDirectory.resolvePath("settings.json");
+            var settingsFile:File = File.applicationDirectory.resolvePath("settings.json");
+            trace("saveSettings:", settingsFile.url)
             var fileStream:FileStream = new FileStream();
             fileStream.open(settingsFile, FileMode.WRITE);
             var jsonString:String = JSON.stringify(settings);
