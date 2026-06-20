@@ -6,7 +6,5 @@ public class GlobalConfig {
     public static var currentGameFolder:File;
     public static var currentServer:String;
 
-    public function GlobalConfig() {
-    }
 }
 }

@@ -19,6 +19,7 @@
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/assets" path-in-package="assets" />
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/programs" path-in-package="programs" />
           </files-to-package>
+          <AirSigningOptions keystore-path="D:/CTW/zmxy3/secretKey/Main.p12" use-temp-certificate="false" />
         </packaging-air-desktop>
         <packaging-android />
         <packaging-ios />
@@ -29,15 +30,14 @@
         </dependencies>
         <compiler-options>
           <option name="resourceFilesMode" value="None" />
-          <option name="additionalOptions" value="-strict=false -warnings=false -define=CONFIG::DEBUG,true -define=CONFIG::RELEASE,false -define=CONFIG::FLASH_AUTHORING,true" />
         </compiler-options>
         <packaging-air-desktop />
-        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/assets/Main-app.xml" package-file-name="Main">
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/assets/Main-app.xml" package-file-name="Main-Mobile">
           <files-to-package>
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/assets" path-in-package="assets" />
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/programs" path-in-package="programs" />
           </files-to-package>
-          <AirSigningOptions arch="armv8" keystore-path="$MODULE_DIR$/secretKey/Main.p12" use-temp-certificate="false" />
+          <AirSigningOptions arch="armv8" keystore-path="D:/CTW/zmxy3/secretKey/Main.p12" use-temp-certificate="false" />
         </packaging-android>
         <packaging-ios package-file-name="FlashLauncher-Mobile" />
       </configuration>
