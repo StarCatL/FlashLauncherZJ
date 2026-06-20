@@ -54,3 +54,62 @@ java -jar swfUtils-1.0-SNAPSHOT.jar "input.swf" "output.swf"
 ```bash
 xcmFlash app:/programs/demo/demo.swf
 ```
+
+————————————————————————————————————————————————————————————————————————————
+
+# FlashLauncherZJ
+Flash Player for Open Source Handheld Game Consoles
+
+## Game Path and Configuration Instructions
+### Directory Structure
+
+Game files should be placed according to the following structure:
+
+```text
+app:/programs/
+├── demo/
+│   ├── demo.swf
+│   └── xcmFlashConfig.json
+├── demo2/
+│   ├── demo2.swf
+│   └── xcmFlashConfig.json
+└── ...
+```
+
+### Configuration File Description
+
+xcmFlashConfig.json is the core configuration file for games, and the meanings of its fields are as follows:
+
+```json
+{
+  "name": "demo",
+  "bgColor": "0x333333",
+  "des": "demo",
+  "lowestVersion": 1.0,
+  "core": "demo.swf",
+  "icon": "icon.png"
+}
+```
+
+## SWF File Conversion Instructions
+Only unencrypted and unprotected SWF files are supported. If the file is encrypted or protected with multiple layers, it needs to be unprotected first.
+
+If the original SWF file fails to run, conversion is recommended. However, please note that this method is a solution and does not guarantee that all files can be repaired and run successfully.
+
+Ensure JDK17 is installed on the system.
+
+Execute the following command for conversion:
+
+```bash
+java -jar swfUtils-1.0-SNAPSHOT.jar "input.swf" "output.swf"
+```
+
+## Integration with ES Frontend
+
+To use with the ES frontend, mount the actual ROM path to app:/programs.
+
+Pass the path of the game's main program when starting, for example:
+
+```bash
+xcmFlash app:/programs/demo/demo.swf
+```
